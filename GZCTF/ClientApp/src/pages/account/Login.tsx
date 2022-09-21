@@ -51,11 +51,11 @@ const Login: FC = () => {
         const from = params['from']
         navigate(from ? (from as string) : '/')
       })
-      .catch(() => {
+      .catch((err) => {
         showNotification({
           color: 'red',
           title: '登录失败',
-          message: '无效的用户名或密码',
+          message: `${err.response.data.title}`,
           icon: <Icon path={mdiClose} size={1} />,
           disallowClose: true,
         })
